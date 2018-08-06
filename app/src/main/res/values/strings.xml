@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Inventory</string>
+    <string name="add_product">Add product</string>
+    <string name="product_name">Product name</string>
+    <string name="product_price">Price</string>
+    <string name="product_currency">€</string>
+    <string name="product_quantity">Quantity</string>
+    <string name="product_supplier">Supplier</string>
+    <string name="supplier_contact">Phone number</string>
+    <string name="save">Save</string>
+    <string name="contains">Inventory contains: </string>
+    <string name="products"> products \n\n</string>
+</resources>
