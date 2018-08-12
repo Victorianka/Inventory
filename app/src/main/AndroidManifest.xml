@@ -16,9 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddProduct"
-            android:label="@string/add_product">
-        </activity>
-    </application>
+
+    <activity
+        android:name=".AddProduct"
+        android:label="@string/add_product"
+        android:parentActivityName=".MainActivity"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+    </activity>
+</application>
 
 </manifest>

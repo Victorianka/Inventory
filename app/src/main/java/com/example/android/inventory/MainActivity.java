@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         TextView displayView = (TextView) findViewById(R.id.inventory_view);
 
         try {
-            displayView.setText(R.string.contains + cursor.getCount() + R.string.products);
+            displayView.setText(getString(R.string.contains) + cursor.getCount() + getString(R.string.products));
             displayView.append(
                     InventoryEntry._ID + " | " +
                             InventoryEntry.COLUMN_PRODUCT_NAME + " | " +

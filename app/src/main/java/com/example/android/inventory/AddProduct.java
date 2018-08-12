@@ -36,17 +36,17 @@ public class AddProduct extends AppCompatActivity {
     }
 
     private void addProduct() {
-        String productName = mProductName.getText().toString().trim();
+        String productName = mProductName.getText().toString();
 
-        String productPrice = mProductPrice.getText().toString().trim();
+        String productPrice = mProductPrice.getText().toString();
         int productPriceInt = Integer.parseInt(productPrice);
 
-        String productQuantity = mProductQuantity.getText().toString().trim();
+        String productQuantity = mProductQuantity.getText().toString();
         int productQuantityInt = Integer.parseInt(productQuantity);
 
-        String productSupplier = mProductSupplier.getText().toString().trim();
+        String productSupplier = mProductSupplier.getText().toString();
 
-        String supplierContact = mSupplierContact.getText().toString().trim();
+        String supplierContact = mSupplierContact.getText().toString();
         int supplierContactInt = Integer.parseInt(supplierContact);
 
         DbHelper mDbHelper = new DbHelper(this);
