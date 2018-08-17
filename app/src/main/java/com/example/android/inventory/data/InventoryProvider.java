@@ -54,7 +54,7 @@ public class InventoryProvider extends ContentProvider {
             case PRODUCTS:
                 return insertProduct(uri, contentValues);
             default:
-                throw new IllegalArgumentException("Insertion is not supported for " + uri);
+                throw new IllegalArgumentException("This is not supported for " + uri);
         }
     }
 
@@ -73,7 +73,7 @@ public class InventoryProvider extends ContentProvider {
     private Uri insertProduct(Uri uri, ContentValues values) {
         String nameProduct = values.getAsString(Inventory.InventoryEntry.COLUMN_PRODUCT_NAME);
         if (nameProduct == null) {
-            throw new IllegalArgumentException("Product name requires");
+            throw new IllegalArgumentException("Product name requires valid");
         }
 
         Integer priceProduct = values.getAsInteger(Inventory.InventoryEntry.COLUMN_PRODUCT_PRICE);
