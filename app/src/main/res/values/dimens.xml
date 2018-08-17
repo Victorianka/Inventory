@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="layout_margin_standard">16dp</dimen>
+    <dimen name="layout_margin_low">8dp</dimen>
     <dimen name="layout_margin_high">20dp</dimen>
     <dimen name="text_size_small">12sp</dimen>
     <dimen name="text_size">18sp</dimen>
     <dimen name="dimen_0dp">0dp</dimen>
+    <dimen name="button_height">40dp</dimen>
 </resources>

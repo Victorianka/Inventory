@@ -29,12 +29,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 + InventoryEntry.COLUMN_SUPPLIER_CONTACT + " INTEGER );";
 
         db.execSQL(SQL_CREATE_PRODUCT_TABLE);
-
-        Log.d("successfully message" , "created table of db");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + InventoryEntry.TABLE_NAME);
     }
 }
