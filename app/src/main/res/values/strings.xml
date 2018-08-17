@@ -28,4 +28,9 @@
     <string name="confirm_discarding">Do you want to discard changes and exit?</string>
     <string name="discard">Discard</string>
     <string name="continue_editing">Continue editing</string>
+    <string name="product_name_required">Product name required</string>
+    <string name="price_required">Product price required</string>
+    <string name="quantity_required">Product quantity required</string>
+    <string name="supplier_name_required">Supplier name required</string>
+    <string name="supplier_phone_required">Supplier contact required</string>
 </resources>

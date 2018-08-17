@@ -12,6 +12,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -83,30 +84,84 @@ public class AddProduct extends AppCompatActivity implements LoaderManager.Loade
         String productSupplier = mProductSupplier.getText().toString();
         String supplierContact = mSupplierContact.getText().toString();
 
-        ContentValues values = null;
-        Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
+        if (mCurrentProductUri == null) {
+            if (TextUtils.isEmpty(productName)) {
+                Toast.makeText(this, getString(R.string.product_name_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (TextUtils.isEmpty(productPrice)) {
+                Toast.makeText(this, getString(R.string.price_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (TextUtils.isEmpty(productQuantity)) {
+                Toast.makeText(this, getString(R.string.quantity_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (TextUtils.isEmpty(productSupplier)) {
+                Toast.makeText(this, getString(R.string.supplier_name_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (TextUtils.isEmpty(supplierContact)) {
+                Toast.makeText(this, getString(R.string.supplier_phone_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            ContentValues values = new ContentValues();
 
-        if (newUri == null) {
-            Toast.makeText(this, getText(R.string.saving_error), Toast.LENGTH_SHORT).show();
+            values.put(InventoryEntry.COLUMN_PRODUCT_NAME, productName);
+            values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, productPrice);
+            values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, productQuantity);
+            values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER, productSupplier);
+            values.put(InventoryEntry.COLUMN_SUPPLIER_CONTACT, supplierContact);
+
+            Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
+            if (newUri == null) {
+                Toast.makeText(this, getString(R.string.saving_error),
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getString(R.string.saving_successful),
+                        Toast.LENGTH_SHORT).show();
+                finish();
+            }
         } else {
-            Toast.makeText(this, getText(R.string.saving_successful), Toast.LENGTH_SHORT).show();
-        }
+            if (TextUtils.isEmpty(productName)) {
+                Toast.makeText(this, getString(R.string.product_name_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (TextUtils.isEmpty(productPrice)) {
+                Toast.makeText(this, getString(R.string.price_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (TextUtils.isEmpty(productQuantity)) {
+                Toast.makeText(this, getString(R.string.quantity_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (TextUtils.isEmpty(productSupplier)) {
+                Toast.makeText(this, getString(R.string.supplier_name_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (TextUtils.isEmpty(supplierContact)) {
+                Toast.makeText(this, getString(R.string.supplier_phone_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-        values = new ContentValues();
-        values.put(InventoryEntry.COLUMN_PRODUCT_NAME, productName);
-        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, productPrice);
-        values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, productQuantity);
-        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER, productSupplier);
-        values.put(InventoryEntry.COLUMN_SUPPLIER_CONTACT, supplierContact);
+            ContentValues values = new ContentValues();
 
-        int rowsAffected = getContentResolver().update(mCurrentProductUri, values, null, null);
-        if (rowsAffected == 0) {
-            Toast.makeText(this, getString(R.string.updating_error),
-                    Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, getString(R.string.updating_successful),
-                    Toast.LENGTH_SHORT).show();
-            finish();
+            values.put(InventoryEntry.COLUMN_PRODUCT_NAME, productName);
+            values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, productPrice);
+            values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, productQuantity);
+            values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER, productSupplier);
+            values.put(InventoryEntry.COLUMN_SUPPLIER_CONTACT, supplierContact);
+
+            int rowsAffected = getContentResolver().update(mCurrentProductUri, values, null, null);
+            if (rowsAffected == 0) {
+                Toast.makeText(this, getString(R.string.updating_error),
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getString(R.string.updating_successful),
+                        Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
         }
     }
 
