@@ -11,7 +11,7 @@ public class Inventory {
 
     public static final String PATH_INVENTORY = "product";
 
-    public Inventory() {}
+    private Inventory() {}
 
     public final static class InventoryEntry implements BaseColumns {
 

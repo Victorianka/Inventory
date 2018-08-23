@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--Have you seen RecyclerView? It is a newer and more advanced version of ListView, I'd encourage you to try it for the next project.
+I have finished a YouTube tutorial describing how to implement it. - https://www.youtube.com/watch?v=W29vSFYF1ts&feature=youtu.be -->
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"

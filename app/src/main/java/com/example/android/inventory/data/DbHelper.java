@@ -34,5 +34,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + InventoryEntry.TABLE_NAME);
+        //Removing the user's data should be avoided at all costs. The users may get very frustrated if they download a new version of the application just to find out that they have lost some of their data. This may trigger some of the users to uninstall the application.
+        //At this stage you don't need to update the database, as there is only 1 version, but in the future you may think of a better database upgrade strategy.
     }
 }

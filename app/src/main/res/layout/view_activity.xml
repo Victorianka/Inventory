@@ -147,7 +147,7 @@
                         android:layout_height="30dp"
                         android:background="@color/colorAccent"
                         android:text="+"
-                        android:textColor="#fff" />
+                        android:textColor="@color/text_color" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -162,7 +162,7 @@
                         android:layout_height="30dp"
                         android:background="@color/colorAccent"
                         android:text="-"
-                        android:textColor="#fff" />
+                        android:textColor="@color/text_color" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -283,7 +283,7 @@
             android:drawableLeft="@drawable/bin"
             android:focusable="false"
             android:text="Delete"
-            android:textColor="#fff" />
+            android:textColor="@color/text_color" />
         <!-- Icon made by Roundicons from https://www.flaticon.com/. Flaticon is licensed by Creative Commons BY 3.0 -->
 
     </LinearLayout>

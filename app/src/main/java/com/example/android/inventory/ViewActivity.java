@@ -40,7 +40,8 @@ public class ViewActivity extends AppCompatActivity implements LoaderManager.Loa
         mProductQuantityView = findViewById(R.id.product_quantity_view_text);
         mProductSupplierNameView = findViewById(R.id.product_supplier_name_view_text);
         mProductSupplierContactView = findViewById(R.id.product_supplier_phone_number_view_text);
-
+//Have you heard of ButterKnife library? It can dramatically reduce the amount of code you need to write when manipulating the views. I would encourage you to check it out. My recent YouTube tutorial might be able to help with that.
+//(https://www.youtube.com/watch?v=NGVDvFEwpRM)
         Intent intent = getIntent();
         mCurrentProductUri = intent.getData();
         if (mCurrentProductUri == null) {
@@ -48,7 +49,6 @@ public class ViewActivity extends AppCompatActivity implements LoaderManager.Loa
         } else {
             getSupportLoaderManager().initLoader(EXISTING_INVENTORY_LOADER, null, this);
         }
-
         Log.d("message", "onCreate ViewActivity");
     }
 
@@ -75,9 +75,7 @@ public class ViewActivity extends AppCompatActivity implements LoaderManager.Loa
         if (cursor == null || cursor.getCount() < 1) {
             return;
         }
-        if (cursor.moveToFirst()) {
-
-        }
+        if (cursor.moveToFirst()) { }
             final int idColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry._ID);
             int nameColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_NAME);
             int priceColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_PRICE);
@@ -218,7 +216,8 @@ public class ViewActivity extends AppCompatActivity implements LoaderManager.Loa
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
+//Line 211: Any button will dismiss the popup dialog by default, so you don't have to add dialog.dismiss explicitly. If this is the only thing you would like to do, then you can replace the whole OnClickListener with a null, like so:
+//setNegativeButton("Cancel", null);
 }
 
 
