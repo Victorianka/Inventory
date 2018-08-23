@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
+import com.example.android.inventory.data.Inventory.InventoryEntry;
+
 public class InventoryProvider extends ContentProvider {
 
     private static final int PRODUCTS = 100;
@@ -39,6 +41,11 @@ public class InventoryProvider extends ContentProvider {
         switch (match) {
             case PRODUCTS:
                 cursor = database.query(Inventory.InventoryEntry.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
+                break;
+            case PRODUCT_ID:
+                selection = Inventory.InventoryEntry._ID + "=?";
+                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                cursor = database.query(InventoryEntry.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             default:
                 throw new IllegalArgumentException("Cannot query unknown URI " + uri);
@@ -86,7 +93,7 @@ public class InventoryProvider extends ContentProvider {
             throw new IllegalArgumentException("Product quantity requires valid");
         }
 
-        Integer supplierName = values.getAsInteger(Inventory.InventoryEntry.COLUMN_PRODUCT_SUPPLIER);
+        String supplierName = values.getAsString(Inventory.InventoryEntry.COLUMN_PRODUCT_SUPPLIER);
         if (supplierName == null) {
             throw new IllegalArgumentException("Product supplier requires valid");
         }
@@ -149,34 +156,34 @@ public class InventoryProvider extends ContentProvider {
         if (values.containsKey(Inventory.InventoryEntry.COLUMN_PRODUCT_NAME)) {
             String nameProduct = values.getAsString(Inventory.InventoryEntry.COLUMN_PRODUCT_NAME);
             if (nameProduct == null) {
-                throw new IllegalArgumentException("Product name requires");
+                throw new IllegalArgumentException("Product name requires valid name");
             }
         }
         if (values.containsKey(Inventory.InventoryEntry.COLUMN_PRODUCT_PRICE)) {
             Integer priceProduct = values.getAsInteger(Inventory.InventoryEntry.COLUMN_PRODUCT_PRICE);
             if (priceProduct != null && priceProduct < 0) {
                 throw new
-                        IllegalArgumentException("Product price requires valid");
+                        IllegalArgumentException("Product price requires valid price");
             }
         }
         if (values.containsKey(Inventory.InventoryEntry.COLUMN_PRODUCT_QUANTITY)) {
             Integer quantityProduct = values.getAsInteger(Inventory.InventoryEntry.COLUMN_PRODUCT_QUANTITY);
             if (quantityProduct != null && quantityProduct < 0) {
                 throw new
-                        IllegalArgumentException("Product quantity requires valid");
+                        IllegalArgumentException("Product quantity requires valid number");
             }
         }
         if (values.containsKey(Inventory.InventoryEntry.COLUMN_PRODUCT_SUPPLIER)) {
-            Integer supplierName = values.getAsInteger(Inventory.InventoryEntry.COLUMN_PRODUCT_SUPPLIER);
+            String supplierName = values.getAsString(Inventory.InventoryEntry.COLUMN_PRODUCT_SUPPLIER);
             if (supplierName == null) {
-                throw new IllegalArgumentException("Product supplier requires valid");
+                throw new IllegalArgumentException("Product supplier requires valid name");
             }
         }
         if (values.containsKey(Inventory.InventoryEntry.COLUMN_SUPPLIER_CONTACT)) {
             Integer supplierPhone = values.getAsInteger(Inventory.InventoryEntry.COLUMN_SUPPLIER_CONTACT);
             if (supplierPhone != null && supplierPhone < 0) {
                 throw new
-                        IllegalArgumentException("Supplier contact requires valid");
+                        IllegalArgumentException("Supplier contact requires valid phone number");
             }
         }
         if (values.size() == 0) {
