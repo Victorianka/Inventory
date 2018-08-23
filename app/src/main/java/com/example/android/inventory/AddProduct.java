@@ -243,7 +243,7 @@ public class AddProduct extends AppCompatActivity implements LoaderManager.Loade
             String currentName = cursor.getString(nameColumnIndex);
             int currentPrice = cursor.getInt(priceColumnIndex);
             int currentQuantity = cursor.getInt(quantityColumnIndex);
-            int currentSupplierName = cursor.getInt(supplierNameColumnIndex);
+            String currentSupplierName = cursor.getString(supplierNameColumnIndex);
             int currentSupplierPhone = cursor.getInt(supplierPhoneColumnIndex);
 
             mProductName.setText(currentName);
