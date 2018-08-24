@@ -19,12 +19,12 @@ import org.w3c.dom.Text;
 
 public class InventoryCursorAdapter extends CursorAdapter {
 
-    public InventoryCursorAdapter(Context context, Cursor c){
-        super(context, c,0);
+    public InventoryCursorAdapter(Context context, Cursor c) {
+        super(context, c, 0);
     }
 
     @Override
-public View newView(Context context, Cursor cursor, ViewGroup parent) {
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
     }
 
@@ -38,7 +38,6 @@ public View newView(Context context, Cursor cursor, ViewGroup parent) {
         TextView productQuantityTextView = view.findViewById(R.id.product_quantity_text_view);
         Button productSaleButton = view.findViewById(R.id.sale_button);
 //You can dramatically increase the performance of your application by implementing the ViewHolder design pattern.
-//
 //I have written a blog post to explain how to implement this pattern, you can find it here - http://www.spreys.com/view-holder-design-pattern-for-android/
         final int columnIdIndex = cursor.getColumnIndex(Inventory.InventoryEntry._ID);
         int productNameColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_NAME);

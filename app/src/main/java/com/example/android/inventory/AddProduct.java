@@ -41,7 +41,6 @@ public class AddProduct extends AppCompatActivity implements LoaderManager.Loade
         public boolean onTouch(View view, MotionEvent motionEvent) {
             mProductHasChanged = true;
             Log.d("message", "onTouch");
-
             return false;
         }
     };
@@ -175,7 +174,7 @@ public class AddProduct extends AppCompatActivity implements LoaderManager.Loade
         switch (item.getItemId()) {
             case R.id.save:
                 addProduct();
-                finish();
+                return true;
             case android.R.id.home:
                 if (!mProductHasChanged) {
                     NavUtils.navigateUpFromSameTask(this);
@@ -278,5 +277,6 @@ public class AddProduct extends AppCompatActivity implements LoaderManager.Loade
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
 }
 

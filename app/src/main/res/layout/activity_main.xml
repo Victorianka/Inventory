@@ -11,13 +11,16 @@ I have finished a YouTube tutorial describing how to implement it. - https://www
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/inventory_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_margin="@dimen/layout_margin_standard"
+        android:text="@string/empty_inventory"
         tools:text="Inventory" />
 
     <com.getbase.floatingactionbutton.FloatingActionButton

@@ -33,4 +33,5 @@
     <string name="quantity_required">Product quantity required</string>
     <string name="supplier_name_required">Supplier name required</string>
     <string name="supplier_phone_required">Supplier contact required</string>
+    <string name="empty_inventory">Inventory is empty \n\nAdd your first product</string>
 </resources>

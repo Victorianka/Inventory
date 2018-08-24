@@ -75,18 +75,19 @@ public class ViewActivity extends AppCompatActivity implements LoaderManager.Loa
         if (cursor == null || cursor.getCount() < 1) {
             return;
         }
-        if (cursor.moveToFirst()) { }
-            final int idColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry._ID);
-            int nameColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_NAME);
-            int priceColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_PRICE);
-            int quantityColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_QUANTITY);
-            int supplierNameColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_SUPPLIER);
-            int supplierPhoneColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_SUPPLIER_CONTACT);
+        if (cursor.moveToFirst()) {
+        }
+        final int idColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry._ID);
+        int nameColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_NAME);
+        int priceColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_PRICE);
+        int quantityColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_QUANTITY);
+        int supplierNameColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_PRODUCT_SUPPLIER);
+        int supplierPhoneColumnIndex = cursor.getColumnIndex(Inventory.InventoryEntry.COLUMN_SUPPLIER_CONTACT);
 
         String currentName = cursor.getString(nameColumnIndex);
         final int currentPrice = cursor.getInt(priceColumnIndex);
         final int currentQuantity = cursor.getInt(quantityColumnIndex);
-        int currentSupplierName = cursor.getInt(supplierNameColumnIndex);
+        String currentSupplierName = cursor.getString(supplierNameColumnIndex);
         final int currentSupplierContact = cursor.getInt(supplierPhoneColumnIndex);
 
         mProductNameView.setText(currentName);
